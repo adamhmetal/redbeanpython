@@ -1,0 +1,84 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "redbeanpython"
+version = "1.0.0"
+description = "RedBeanPython ORM"
+authors = ["Adam Puza <adampuza@redbeanpython.org>"]
+readme = "README.md"
+license = "MIT"
+packages = [
+    { include = "redbeanpython" },
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Database :: Front-Ends",
+]
+
+[tool.poetry.urls]
+Homepage = "https://https://redbeanpython.org/"
+Documentation = "https://https://redbeanpython.org/"
+Changelog = "https://redbeanpython.org/changelog/"
+"Source Code" = "https://github.com/adamhmetal/redbeanpython"
+"Issue Tracker" = "https://github.com/adamhmetal/redbeanpython/issues"
+
+[tool.poetry.scripts]
+redbean = "redbeanpython.cli.cli:main"
+
+[tool.poetry.dependencies]
+python = ">= 3.11"
+SQLAlchemy = ">= 2.0.0"
+alembic = ">= 1.8.0"
+
+[tool.poetry.group.postgres.dependencies]
+psycopg2 = "^2.9.9"
+
+[tool.poetry.group.mysql.dependencies]
+PyMySQL = ">= 1.0.2"
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.24.4"
+black = "^24.1.1"
+
+[tool.poetry.group.test.dependencies]
+poethepoet = "^0.24.4"
+colored = "^2.2.4"
+mkdocs-material = "^9.5.5"
+
+[tool.black]
+line-length = 120
+
+[tool.poe.tasks]
+test.cmd = 'bash -c "poe test_postgres && poe test_mysql && poe test_sqlite"'
+test_compatibility.script = 'tests.run_compatibility_tests:run_compatibility_tests'
+docs_serve.cmd = 'mkdocs serve --watch-theme'
+docs_build.cmd = 'mkdocs build'
+
+[tool.poe.tasks.test_postgres]
+cmd = 'docker compose -f tests/docker/docker-compose.yml run --build --rm --service-ports --entrypoint "poetry run poe test" package-postgres'
+env = { PYTHON_VERSION = "3.12", DB_VERSION = "postgres:latest" }
+
+[tool.poe.tasks.test_mysql]
+cmd = 'docker compose -f tests/docker/docker-compose.yml run --build --rm --service-ports --entrypoint "poetry run poe test" package-mysql'
+env = { PYTHON_VERSION = "3.12", DB_VERSION = "mysql:latest" }
+
+[tool.poe.tasks.test_sqlite]
+cmd = 'docker compose -f tests/docker/docker-compose.yml run --build --rm --service-ports --entrypoint "poetry run poe test" package-sqlite'
+env = { PYTHON_VERSION = "3.12" }
+
+[tool.poe.tasks.test_dev]
+help = "Quick run  tests, with inotifywait and live reload. Useful for development."
+cmd = 'tests/run_dev_tests.sh $database'
+
+[[tool.poe.tasks.test_dev.args]]
+name = "database"
+default = "postgres"
+help = "Database to run tests against (postgres, mysql, sqlite)"
+options = ["-d", "--database"]

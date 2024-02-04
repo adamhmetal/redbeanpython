@@ -1,0 +1,74 @@
+version: '3'
+services:
+  package:
+    build:
+      context: ../../
+      dockerfile: tests/docker/Dockerfile
+      args:
+        - PYTHON_VERSION=${PYTHON_VERSION:-3.11}
+    volumes:
+      - ${PWD}/tests:/vol/package/tests
+      - ${PWD}/redbeanpython:/vol/package/redbeanpython
+      - ${PWD}/.coverage-reports:/vol/package/.coverage-reports
+    privileged: true
+
+  package-postgres:
+    extends:
+      service: package
+    links:
+      - postgres-container
+    depends_on:
+      - postgres-container
+    environment:
+      - DB_TYPE=postgres
+      - DB_DSN=postgresql+psycopg://postgres:password@postgres-container/postgres
+
+  package-mysql:
+    extends:
+      service: package
+    links:
+      - mysql-container
+    depends_on:
+      - mysql-container
+    environment:
+      - DB_TYPE=mysql
+      - DB_DSN=mysql+pymysql://user:password@mysql-container/db1
+
+  package-sqlite:
+    extends:
+      service: package
+    environment:
+      - DB_TYPE=sqlite
+      - DB_DSN=sqlite:////tmp/rb.test.sqlite
+
+  postgres-container:
+    image: ${DB_VERSION:-postgres:latest}
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 1s
+      timeout: 1s
+      retries: 30
+
+  mysql-container:
+    image: ${DB_VERSION:-mysql:latest}
+    restart: always
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: MYSQL_ALLOW_EMPTY_PASSWORD=1
+      MYSQL_DATABASE: db1
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u user --password=password
+      interval: 5s
+      timeout: 5s
+      retries: 55

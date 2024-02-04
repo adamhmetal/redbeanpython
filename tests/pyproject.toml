@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "RebBeanPython - tests"
+version = "1.0.0"
+description = "Tests container configuration for redbeanpython"
+authors = ["Adam Puza <adampuza@redbeanpython.org>"]
+packages = [
+    { include = "redbeanpython" },
+    { include = "tests" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+psycopg = "^3.1.17"
+SQLAlchemy = "2.0.25"
+poethepoet = "^0.24.4"
+pytest = "^7.4.3"
+pylint = "^3.0.2"
+pytest-cov = "^4.1.0"
+pytest-sugar = "^0.9.7"
+pytest-forked = "^1.6.0"
+alembic = "^1.13.1"
+pymysql = "^1.1.0"
+datadiff = "^2.2.0"
+camel-converter = "^3.1.1"
+cryptography = "^42.0.2"
+
+[tool.poe.tasks]
+test.shell = 'pytest --forked --cov=redbeanpython --cov-report=xml --cov-branch && sed -i "s/\/vol\/package\///g" coverage.xml && cp coverage.xml tests/coverage.xml'
+test_marked.cmd = 'pytest --exitfirst --forked -m $mark_expression'
+
+[[tool.poe.tasks.test_marked.args]]
+name = "mark_expression"
+required = true
+help = "Mark expression to select tests to run"
+options = ["-m", "--mark-expression"]
+
+[tool.pytest.ini_options]
+pythonpath = [
+    ".",
+    "tests",
+]
+addopts = [
+    "--import-mode=importlib",
+]
+testpaths = [
+    "tests",
+]
+markers = [
+    "dev: mark tests to run them selectively during development"
+]

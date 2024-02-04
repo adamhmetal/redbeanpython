@@ -1,0 +1,29 @@
+from sqlalchemy import Column, String, BigInteger
+
+from redbeanpython import Model
+
+
+class SomeName(Model):
+    """
+    ! Do not change content of this file.
+    ! It is generated automatically.
+    ! It will be overwritten on next schema change (in "fluid" mode).
+    ! If you need to extend this model, please use inheritance.
+
+    SQLAlchemy model for bean: some_name.
+    """
+
+    __tablename__ = 'some_name'
+    __table_args__ = {'extend_existing': True}
+
+    id = Column(String(255), primary_key=True)
+    value = Column(BigInteger, nullable=True)
+
+    def __json__(self):
+        return self.as_dict()
+
+    def as_dict(self):
+        return {
+            'id': self.id,
+            'value': self.value,
+        }

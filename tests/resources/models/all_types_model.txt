@@ -1,0 +1,45 @@
+from sqlalchemy import Column, Boolean, LargeBinary, Date, DateTime, Numeric, Float, String, BigInteger, Text
+
+from redbeanpython import Model
+
+
+class SomeName(Model):
+    """
+    ! Do not change content of this file.
+    ! It is generated automatically.
+    ! It will be overwritten on next schema change (in "fluid" mode).
+    ! If you need to extend this model, please use inheritance.
+
+    SQLAlchemy model for bean: some_name.
+    """
+
+    __tablename__ = 'some_name'
+    __table_args__ = {'extend_existing': True}
+
+    bool = Column(Boolean, nullable=True)
+    bytes = Column(LargeBinary, nullable=True)
+    date = Column(Date, nullable=True)
+    datetime = Column(DateTime, nullable=True)
+    decimal = Column(Numeric(precision=30, scale=10), nullable=True)
+    float = Column(Float, nullable=True)
+    id = Column(String(255), primary_key=True)
+    int = Column(BigInteger, nullable=True)
+    string = Column(Text, nullable=True)
+    text = Column(Text, nullable=True)
+
+    def __json__(self):
+        return self.as_dict()
+
+    def as_dict(self):
+        return {
+            'bool': self.bool,
+            'bytes': self.bytes,
+            'date': self.date,
+            'datetime': self.datetime,
+            'decimal': self.decimal,
+            'float': self.float,
+            'id': self.id,
+            'int': self.int,
+            'string': self.string,
+            'text': self.text,
+        }

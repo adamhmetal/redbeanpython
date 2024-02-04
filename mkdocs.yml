@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+site_name: RedBeanPython
+site_url: https://www.redbeanpython.org/
+site_description: Zero config ORM for Python.
+site_author: Adam Puza
+copyright: "Licence: MIT | Copyright &copy; 2024 Adam Puza"
+
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  locale: en
+  favicon: assets/favicon.png
+  logo: assets/logo.png
+  highlightjs: true
+  hljs_languages:
+    - python
+    - bash
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: black
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: black
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - navigation.expand
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Introduction:
+      - Welcome: index.md
+      - Installation: install.md
+      - Connection: connection.md
+      - Configuration: custom_configuration.md
+      - Quick Tour: quick_tour.md
+  - Basics:
+      - Conventions: conventions.md
+      - Types: types.md
+      - Beans (Models): beans.md
+      - CRUD: crud.md
+      - Find, count, exists: finding.md
+      - Fluid and Frozen (Production). Migrations: fluid_frozen.md
+      - Tools: tools.md
+  - Advanced:
+      - Performance: performance.md
+  - Hybrid mode:
+      - Act as SQLAlchemy: hybrid_mode.md
+      - Bulk operations: bulk_operations.md
+      - Joined load: joined_load.md
+      - SQLAlchemy equivalents: migration_to_sqlalchemy.md
+  - Project:
+      - Compatibility Table: supported_versions.md
+      - Changelog: changelog.md
+      - Roadmap: roadmap.md
+      - About: licence.md
+
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
