@@ -23,8 +23,8 @@ classifiers = [
 ]
 
 [tool.poetry.urls]
-Homepage = "https://https://redbeanpython.org/"
-Documentation = "https://https://redbeanpython.org/"
+Homepage = "https://redbeanpython.org/"
+Documentation = "https://redbeanpython.org/"
 Changelog = "https://redbeanpython.org/changelog/"
 "Source Code" = "https://github.com/adamhmetal/redbeanpython"
 "Issue Tracker" = "https://github.com/adamhmetal/redbeanpython/issues"
@@ -46,6 +46,7 @@ PyMySQL = ">= 1.0.2"
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.24.4"
 black = "^24.1.1"
+twine = "^4.0.2"
 
 [tool.poetry.group.test.dependencies]
 poethepoet = "^0.24.4"
