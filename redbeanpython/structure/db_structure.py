@@ -46,8 +46,7 @@ class DbStructure:
 
     def get_model(self, bean: Bean) -> Model:
         model_class = self.get_model_class(bean.bean_type)
-        table_definition = self.tables[bean.bean_type]
-        return model_class(**table_definition.bean_as_model_data(bean))
+        return model_class(**dict(bean))
 
     def get_default_properties(self, bean_type: str) -> dict[str, TYPE]:
         if table_definition := self.tables.get(bean_type):

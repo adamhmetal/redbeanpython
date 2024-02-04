@@ -4,7 +4,7 @@ One of Python's most significant advantages is that we can make applications fas
 
 The idea of RedBeanPython ORM is to decrease the time to market for applications by providing an absolutely zero configuration ORM and, simultaneously, heaving the possibility of zero effort transition to advanced ORM when needed.
 
-RedBeanPython idea is inspired by the matured [RedBeanPHP ORM](https://www.redbeanphp.com/index.php) (since 2009 and still running).
+[RedBeanPython](https://redbeanpython.org) idea is inspired by the matured [RedBeanPHP ORM](https://www.redbeanphp.com/index.php) (since 2009 and still running).
 
 RedBeanPython ORM's idea is not to replace the more advanced ORMs (we should not reinvent the wheel) but to cooperate with them. Initially, it can be used as only ORM. When projects evolve, both code bases (RedBeanPython and SQLAlchemy) can coexist and, finally, can be swiftly replaced by SQLAlchemy (if needed).
 

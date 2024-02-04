@@ -63,11 +63,3 @@ class TableDefinition:
 
     def get_properties_dict(self) -> dict[str, TYPE]:
         return {name: None for name in self.columns.keys()}
-
-    def bean_as_model_data(self, bean: Bean) -> dict[str, TYPE]:
-        result = {}
-        for k, value in dict(bean).items():
-            column_type = self.columns[k]
-            result[k] = value
-        return result
-
