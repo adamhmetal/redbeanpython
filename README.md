@@ -8,14 +8,14 @@ The idea of RedBeanPython ORM is to decrease the time to market for applications
 
 RedBeanPython ORM's idea is not to replace the more advanced ORMs (we should not reinvent the wheel) but to cooperate with them. Initially, it can be used as only ORM. When projects evolve, both code bases (RedBeanPython and SQLAlchemy) can coexist and, finally, can be swiftly replaced by SQLAlchemy (if needed).
 
-![Tests on PostgreSQL](https://github.com/adamhmetal/redbeanpythondev/actions/workflows/test_postgres.yml/badge.svg) 
-![Tests on MySQL](https://github.com/adamhmetal/redbeanpythondev/actions/workflows/test_mysql.yml/badge.svg) 
-![Tests on SQLite](https://github.com/adamhmetal/redbeanpythondev/actions/workflows/test_sqlite.yml/badge.svg)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=adamhmetal_redbeanpythondev&metric=coverage)](https://sonarcloud.io/summary/new_code?id=adamhmetal_redbeanpythondev)
+![Tests on PostgreSQL](https://github.com/adamhmetal/redbeanpython/actions/workflows/test_postgres.yml/badge.svg) 
+![Tests on MySQL](https://github.com/adamhmetal/redbeanpython/actions/workflows/test_mysql.yml/badge.svg) 
+![Tests on SQLite](https://github.com/adamhmetal/redbeanpython/actions/workflows/test_sqlite.yml/badge.svg)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=adamhmetal_redbeanpython&metric=coverage)](https://sonarcloud.io/summary/new_code?id=adamhmetal_redbeanpython)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=adamhmetal_redbeanpythondev&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=adamhmetal_redbeanpythondev)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=adamhmetal_redbeanpythondev&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=adamhmetal_redbeanpythondev)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=adamhmetal_redbeanpythondev&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=adamhmetal_redbeanpythondev)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=adamhmetal_redbeanpython&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=adamhmetal_redbeanpython)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=adamhmetal_redbeanpython&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=adamhmetal_redbeanpython)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=adamhmetal_redbeanpython&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=adamhmetal_redbeanpython)
 
 
 # Installation
