@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "redbeanpython"
-version = "1.0.1"
+version = "1.0.2"
 description = "RedBeanPython ORM"
 authors = ["Adam Puza <adampuza@redbeanpython.org>"]
 readme = "README.md"
@@ -38,7 +38,7 @@ SQLAlchemy = ">= 2.0.0"
 alembic = ">= 1.8.0"
 
 [tool.poetry.group.postgres.dependencies]
-psycopg2 = "^2.9.9"
+psycopg = ">= 3.0.18"
 
 [tool.poetry.group.mysql.dependencies]
 PyMySQL = ">= 1.0.2"

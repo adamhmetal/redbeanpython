@@ -27,7 +27,7 @@ RedBeanPython requires
 
 For **PostgreSQL** support RedBeanPython requires:
 
-- psycopg2 2.9.9 or newer.
+- psycopg 3.0.18 or newer.
 
 For **MySQL/MariaDB** support RedBeanPython requires:
 
