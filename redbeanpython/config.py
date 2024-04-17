@@ -43,9 +43,9 @@ class Config:
 
     def _validate_dsn(self):
         dsn_driver = self.dsn.split(":")[0]
-        if dsn_driver not in ["sqlite", "mysql+pymysql", "postgresql+psycopg"]:
+        if dsn_driver not in ["sqlite", "mysql+pymysql", "postgresql+psycopg", "postgresql+psycopg2"]:
             raise ConfigurationError(
-                f"Unsupported driver: {dsn_driver}. Supported: 'sqlite', 'mysql+pymysql', 'postgresql+psycopg'"
+                f"Unsupported driver: {dsn_driver}. Supported: 'sqlite', 'mysql+pymysql', 'postgresql+psycopg', 'postgresql+psycopg2'"
             )
 
     def _validate_directory(self):

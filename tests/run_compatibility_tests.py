@@ -19,6 +19,7 @@ PACKAGES_VERSIONS = {
     "legacy (2022)": [
         "SQLAlchemy==2.0.0",
         "psycopg==3.0.18",
+        "psycopg2==2.9.9",
         "PyMySQL==1.0.2",
         "alembic==1.8.0",
     ],
